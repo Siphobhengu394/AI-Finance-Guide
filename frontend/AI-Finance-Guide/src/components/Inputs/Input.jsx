@@ -17,7 +17,7 @@ const Input = ({value, onChange, placeholder, label, type}) => {
             type={type == 'password' ? showPassword ? 'text' : 'password' : type}
             placeholder={placeholder}
             className="w-full bg-transparent outline-none"
-            value={value}
+            value={value ?? ""}
             onChange={(e) => onChange(e)}
             />
 
