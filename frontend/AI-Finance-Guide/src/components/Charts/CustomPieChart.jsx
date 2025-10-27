@@ -18,7 +18,7 @@ const CustomPieChart = ({
     showTextAnchor,
     }) => {
 
-  return  <ResponsiveContainer width="100" height={300}>
+  return  <ResponsiveContainer width="100%" height={300}>
         <PieChart>
             <Pie
                 data={data}
@@ -32,13 +32,13 @@ const CustomPieChart = ({
             >
                 {data.map((entry, index ) => (
                   <Cell key={`cell-${index}`} fill={colors [index % colors.length]} />
-                ))};
+                ))}
             </Pie>
 
             <Tooltip content={< CustomTooltip /> }/>
             <Legend content={< CustomLegend />}/>
 
-            {showTextAnchor & (
+            {showTextAnchor && (
                 <>
                     <text 
                       x="50%"

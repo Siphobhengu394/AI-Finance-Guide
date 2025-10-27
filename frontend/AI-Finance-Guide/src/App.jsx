@@ -13,7 +13,9 @@ import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
 import Chatbot from "./pages/Dashboard/Chatbot";
 import Expense from "./pages/Dashboard/Expense";
+import Settings from './pages/Settings/Settings';
 import UserProvider from "./context/UserContext";
+import { Toaster } from "react-hot-toast";
 
 
 const App = () => {
@@ -29,10 +31,21 @@ const App = () => {
           <Route path="/income" exact element={<Income />} />
           <Route path="/expense" exact element={<Expense />} />
           <Route path="/chatbot" exact element={<Chatbot />} />
+          <Route path="/settings" element={<Settings />} />
+
 
         </Routes>
       </Router>
     </div>
+    <Toaster
+      toastOptions={{
+        className: "",
+        style: {
+          fontSize:'13px'
+        },
+      }}
+      />
+
     </UserProvider>
   )
 }

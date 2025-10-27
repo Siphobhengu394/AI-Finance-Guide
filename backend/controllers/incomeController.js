@@ -1,6 +1,7 @@
 const xlsx = require('xlsx');
-const Income = require('../models/Income')
-
+const User = require('../models/User');
+const Income = require('../models/Income');
+ 
 
 // add income source
 exports.addIncome = async (req, res ) => {
@@ -37,22 +38,22 @@ exports.getAllIncomes = async (req, res ) => {
         const income = await Income.find({userId}).sort({ date: -1 });
         res.json(income);
     } catch (error) {
-        res.status(500).json({ message: "Server error" })
+        res.status(500).json({ message: "Server error" });
     }
 
-}
+};
 
 
 // delete income source
-exports.deleteIncome = async (req, res ) => {
+exports.deleteIncome = async (req, res ) => {       
        try {
         await Income.findByIdAndDelete(req.params.id);
         res.json({ message: "Income deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: "Server error" })
+        res.status(500).json({ message: "Server error" });
 
     }
-}
+};
 
 // download excel
 exports.downloadIncomeExcel = async (req, res ) => {
@@ -73,7 +74,7 @@ exports.downloadIncomeExcel = async (req, res ) => {
         xlsx.writeFile(wb, 'income_details.xlsx');
         res.download('income_details.xlsx')
     } catch (error) {
-        res.status(500).json({ message: "Server error" })
+        res.status(500).json({ message: "Server error" });
     }
-}
+};
 

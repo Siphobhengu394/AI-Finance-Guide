@@ -1,4 +1,5 @@
 const xlsx = require('xlsx');
+const User = require('../models/User');
 const Expense = require('../models/Expense')
 
 
@@ -17,7 +18,7 @@ exports.addExpense = async (req, res ) => {
     const newExpense = new Expense({
         userId, 
         icon, 
-        source,
+        category,
         amount, 
         date: new Date(date)
     });
@@ -27,7 +28,7 @@ exports.addExpense = async (req, res ) => {
     } catch (error) {
      res.status(500).json({ message: "Server error" });
     }
-}
+};
 
 // get all expense source
 exports.getAllExpense = async (req, res ) => {
@@ -40,7 +41,7 @@ exports.getAllExpense = async (req, res ) => {
         res.status(500).json({ message: "Server error" })
     }
 
-}
+};
 
 
 // delete expense source
@@ -52,7 +53,7 @@ exports.deleteExpense = async (req, res ) => {
         res.status(500).json({ message: "Server error" })
 
     }
-}
+};
 
 // download excel
 exports.downloadExpenseExcel = async (req, res ) => {
