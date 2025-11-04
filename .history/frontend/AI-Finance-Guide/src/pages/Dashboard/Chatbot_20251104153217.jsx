@@ -43,7 +43,6 @@ const Chatbot = () => {
       };
 
       setMessages((prev) => [...prev, botMessage]);
-    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setMessages((prev) => [
         ...prev,
