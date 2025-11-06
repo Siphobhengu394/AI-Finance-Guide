@@ -22,7 +22,7 @@ const Chatbot = () => {
       const res = await fetch("http://localhost:8000/api/v1/financial-advice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: "USER_ID_HERE", input }), // replace with actual userId if you have auth
+        body: JSON.stringify({ userId: "USER_ID_HERE", input:input }), // replace with actual userId if you have auth
       });
       const data = await res.json();
       const botMessage = { sender: "bot", text: data.reply || "Sorry, I couldn't process that." };

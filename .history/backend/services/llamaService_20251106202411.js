@@ -3,7 +3,7 @@ const { queryLlama } = require("../services/llamaService");
 exports.getFinancialAdvice = async (req, res) => {
   const { message } = req.body;
 
-  console.log("Received message for financial advice:", message);
+  console
 
   if (!message) {
     return res.status(400).json({ error: "Message is required" });

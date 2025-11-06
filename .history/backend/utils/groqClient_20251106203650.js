@@ -1,23 +1,23 @@
 require('dotenv').config();
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
-const MODEL = process.env.GROQ_MODEL_NAME || "openai/gpt-oss-20b";
+const MODEL = process.env.GROQ_MODEL_NAME || "llama-3";
 
 // Function to call Groq LLM API
 const callGroqLLM = async (prompt) => {
   
   try {
 
-    console.log("Calling Groq LLM with prompt:", prompt);
+    console.log("Calling Groq LLM with prompt
 
-    const response = await fetch("https://api.z.ai/api/paas/v4/chat/completions", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer c1064d9d222c46abbbafd9095960f8f1.yxOJSZmHPiWySvrh`,
+        "Authorization": `Bearer ${GROQ_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "glm-4.5-flash",
+        model: MODEL,
         messages: [
           { role: "system", content: "You are a financial advisor assistant." },
           { role: "user", content: prompt },

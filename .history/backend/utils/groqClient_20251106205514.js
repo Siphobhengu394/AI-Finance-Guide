@@ -13,7 +13,7 @@ const callGroqLLM = async (prompt) => {
     const response = await fetch("https://api.z.ai/api/paas/v4/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer c1064d9d222c46abbbafd9095960f8f1.yxOJSZmHPiWySvrh`,
+        "Authorization": `Bearer ${GROQ_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

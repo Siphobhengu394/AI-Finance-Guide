@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
   try {
     console.log("Received request for financial advice:", req.body);
     const { input } = req.body;
-    const response = await callGroqLLM(input);
+    const response = await callGroqLLM(messages);
     res.json({ reply: response });
   } catch (err) {
     console.error("Groq call failed:", err);

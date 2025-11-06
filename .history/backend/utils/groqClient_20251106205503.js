@@ -13,11 +13,11 @@ const callGroqLLM = async (prompt) => {
     const response = await fetch("https://api.z.ai/api/paas/v4/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer c1064d9d222c46abbbafd9095960f8f1.yxOJSZmHPiWySvrh`,
+        "Authorization": `Bearer ${GROQ_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "glm-4.5-flash",
+        model: "glp-4.5-Flash",
         messages: [
           { role: "system", content: "You are a financial advisor assistant." },
           { role: "user", content: prompt },

@@ -19,7 +19,7 @@ const callGroqLLM = async (prompt) => {
       body: JSON.stringify({
         model: "glm-4.5-flash",
         messages: [
-          { role: "system", content: "You are a financial advisor assistant." },
+          { role: "system", content: "You are a financial advisor assistant. " },
           { role: "user", content: prompt },
         ],
       }),
