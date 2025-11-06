@@ -27,7 +27,6 @@ const Chatbot = () => {
       const data = await res.json();
       const botMessage = { sender: "bot", text: data.reply || "Sorry, I couldn't process that." };
       setMessages(prev => [...prev, botMessage]);
-    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setMessages(prev => [...prev, { sender: "bot", text: "Server error. Try again later." }]);
     } finally {
