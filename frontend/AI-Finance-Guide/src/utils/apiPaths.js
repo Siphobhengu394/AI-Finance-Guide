@@ -7,8 +7,11 @@ export const API_PATHS = {
         LOGIN: "/api/v1/auth/login",
         REGISTER: "/api/v1/auth/register",
         GET_USER_INFO: "/api/v1/auth/getUser",
+<<<<<<< HEAD
         UPDATE_USER_INFO: "/api/v1/auth/updateUser",
 
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
     },
     DASHBOARD: {
         GET_DATA: "/api/v1/dashboard",

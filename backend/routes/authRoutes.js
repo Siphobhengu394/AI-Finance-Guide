@@ -4,7 +4,10 @@ const {
     registerUser,
     loginUser,
     getUserInfo,
+<<<<<<< HEAD
     updateUserInfo,
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
 } = require("../controllers/authController");
 const upload = require("../middleware/uploadMiddleware");
 
@@ -13,8 +16,11 @@ const router = express.Router();
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/getUser", protect ,getUserInfo);
+<<<<<<< HEAD
 router.put("/updateUser", protect, updateUserInfo);
 
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
 
 router.post("/upload-image", upload.single("image"), (req, res) => {
     if (!req.file) {
@@ -27,4 +33,8 @@ router.post("/upload-image", upload.single("image"), (req, res) => {
 });
 
 
+<<<<<<< HEAD
 module.exports = router; 
+=======
+module.exports = router;
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670

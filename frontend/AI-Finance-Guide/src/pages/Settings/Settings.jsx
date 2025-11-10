@@ -6,22 +6,36 @@ import { toast } from 'react-hot-toast';
 
 const Settings = () => {
   const [userData, setUserData] = useState({
+<<<<<<< HEAD
     fullName: '',
     email: '',
     password: '',
     profileImageUrl: ''
   });
 
+=======
+    name: '',
+    email: '',
+    password: '',
+  });
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
   const [preferences, setPreferences] = useState({
     theme: localStorage.getItem('theme') || 'light',
     currency: localStorage.getItem('currency') || 'USD',
     notifications: localStorage.getItem('notifications') === 'true',
   });
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
   const [loading, setLoading] = useState(false);
 
   // Fetch user profile on page load
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -29,17 +43,22 @@ const Settings = () => {
           BASE_URL + API_PATHS.AUTH.GET_USER_INFO,
           { headers: { Authorization: `Bearer ${token}` } }
         );
+<<<<<<< HEAD
         setUserData({
           fullName: data.fullName,
           email: data.email,
           profileImageUrl: data.profileImageUrl || "",
           password: ''
         });
+=======
+        setUserData({ name: data.name, email: data.email, password: '' });
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
       } catch (_error) {
         console.error(_error);
         toast.error('Failed to load profile');
       }
     };
+<<<<<<< HEAD
 
     fetchProfile();
   }, []);
@@ -65,11 +84,21 @@ const Settings = () => {
     // Persist to localStorage (ensure source of truth)
     localStorage.setItem('theme', active);
   }, [preferences.theme]);
+=======
+    fetchProfile();
+
+    // Apply theme on mount
+    if (preferences.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
 
   const handleAccountChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+<<<<<<< HEAD
   const handleProfileImageChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -93,11 +122,14 @@ const Settings = () => {
     }
   };
 
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
   const handleSaveAccount = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
+<<<<<<< HEAD
       const payload = {
         fullName: userData.fullName,
         email: userData.email,
@@ -111,6 +143,14 @@ const Settings = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
+=======
+      const payload = { name: userData.name, email: userData.email };
+      if (userData.password) payload.password = userData.password;
+
+      await axios.put(BASE_URL + API_PATHS.AUTH.GET_USER_INFO, payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
       toast.success('Profile updated successfully!');
       setUserData({ ...userData, password: '' });
     } catch (_error) {
@@ -121,6 +161,7 @@ const Settings = () => {
     }
   };
 
+<<<<<<< HEAD
   // Theme Toggle Logic (only update state + localStorage; useEffect applies)
   const handleThemeToggle = () => {
     setPreferences((prev) => {
@@ -128,19 +169,39 @@ const Settings = () => {
       // update immediately in state; useEffect will apply DOM changes
       return { ...prev, theme: newTheme };
     });
+=======
+  // Preferences Logic
+  const handleThemeToggle = () => {
+    const newTheme = preferences.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    setPreferences({ ...preferences, theme: newTheme });
+    localStorage.setItem('theme', newTheme);
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
   };
 
   const handleCurrencyChange = (e) => {
     const newCurrency = e.target.value;
+<<<<<<< HEAD
     setPreferences((prev) => ({ ...prev, currency: newCurrency }));
+=======
+    setPreferences({ ...preferences, currency: newCurrency });
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
     localStorage.setItem('currency', newCurrency);
   };
 
   const handleNotificationToggle = () => {
     const newSetting = !preferences.notifications;
+<<<<<<< HEAD
     setPreferences((prev) => ({ ...prev, notifications: newSetting }));
     localStorage.setItem('notifications', newSetting);
     toast.success(newSetting ? 'Notifications enabled' : 'Notifications disabled');
+=======
+    setPreferences({ ...preferences, notifications: newSetting });
+    localStorage.setItem('notifications', newSetting);
+    toast.success(
+      newSetting ? 'Notifications enabled' : 'Notifications disabled'
+    );
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
   };
 
   return (
@@ -149,6 +210,7 @@ const Settings = () => {
         <h2 className="text-2xl font-semibold mb-4">Settings</h2>
 
         {/* Account Settings */}
+<<<<<<< HEAD
         <div className="bg-white dark:bg-gray-800 dark:text-white p-6 rounded-2xl shadow-sm border dark:border-gray-700">
           <h3 className="text-lg font-semibold mb-4">Account Settings</h3>
 
@@ -184,30 +246,59 @@ const Settings = () => {
                 value={userData.fullName}
                 onChange={handleAccountChange}
                 className="w-full border p-2 rounded-md dark:bg-gray-700 dark:border-gray-600"
+=======
+        <div className="bg-white p-6 rounded-2xl shadow-sm border">
+          <h3 className="text-lg font-semibold mb-4">Account Settings</h3>
+          <form onSubmit={handleSaveAccount} className="space-y-5">
+            <div>
+              <label className="block text-gray-600 mb-1">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                value={userData.name}
+                onChange={handleAccountChange}
+                className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
               />
             </div>
 
             <div>
+<<<<<<< HEAD
               <label className="block mb-1">Email</label>
+=======
+              <label className="block text-gray-600 mb-1">Email</label>
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
               <input
                 type="email"
                 name="email"
                 value={userData.email}
                 onChange={handleAccountChange}
+<<<<<<< HEAD
                 className="w-full border p-2 rounded-md dark:bg-gray-700 dark:border-gray-600"
+=======
+                className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
               />
             </div>
 
             <div>
+<<<<<<< HEAD
               <label className="block mb-1">Password</label>
+=======
+              <label className="block text-gray-600 mb-1">Password</label>
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
               <input
                 type="password"
                 name="password"
                 value={userData.password}
                 onChange={handleAccountChange}
                 placeholder="Leave blank to keep current password"
+<<<<<<< HEAD
                 autoComplete="new-password"
                 className="w-full border p-2 rounded-md dark:bg-gray-700 dark:border-gray-600"
+=======
+                className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
               />
             </div>
 
@@ -222,6 +313,7 @@ const Settings = () => {
         </div>
 
         {/* Appearance */}
+<<<<<<< HEAD
         <div className="bg-white dark:bg-gray-800 dark:text-white p-6 rounded-2xl shadow-sm border dark:border-gray-700">
           <h3 className="text-lg font-semibold mb-4">Appearance</h3>
           <div className="flex items-center justify-between">
@@ -230,6 +322,12 @@ const Settings = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Active: <strong>{preferences.theme}</strong></p>
             </div>
 
+=======
+        <div className="bg-white p-6 rounded-2xl shadow-sm border">
+          <h3 className="text-lg font-semibold mb-4">Appearance</h3>
+          <div className="flex items-center justify-between">
+            <p className="text-gray-600">Theme Mode</p>
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
             <button
               onClick={handleThemeToggle}
               className={`px-4 py-2 rounded-md text-white ${
@@ -242,7 +340,11 @@ const Settings = () => {
         </div>
 
         {/* Preferences */}
+<<<<<<< HEAD
          <div className="bg-white p-6 rounded-2xl shadow-sm border">
+=======
+        <div className="bg-white p-6 rounded-2xl shadow-sm border">
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
           <h3 className="text-lg font-semibold mb-4">Preferences</h3>
           <div className="flex flex-col gap-3">
             <label className="text-gray-600">Default Currency</label>
@@ -261,7 +363,11 @@ const Settings = () => {
         </div>
 
         {/* Notifications */}
+<<<<<<< HEAD
          <div className="bg-white p-6 rounded-2xl shadow-sm border">
+=======
+        <div className="bg-white p-6 rounded-2xl shadow-sm border">
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
           <h3 className="text-lg font-semibold mb-4">Notifications</h3>
           <div className="flex items-center justify-between">
             <p className="text-gray-600">Email Notifications</p>

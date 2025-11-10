@@ -84,6 +84,7 @@ exports.getUserInfo = async (req, res ) => {
     }
 };
         
+<<<<<<< HEAD
 
 const bcrypt = require("bcryptjs");
 // UPDATE USER INFO
@@ -111,3 +112,5 @@ exports.updateUserInfo = async (req, res) => {
     res.status(500).json({ message: "Failed to update profile", error: err.message });
   }
 };
+=======
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670

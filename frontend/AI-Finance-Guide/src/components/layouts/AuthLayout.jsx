@@ -1,5 +1,9 @@
 import React from 'react'
+<<<<<<< HEAD
 //import CARD_2 from '../../assets/images/card2.jpeg';
+=======
+import CARD_2 from '../../assets/images/card2.jpeg';
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
 import  {LuTrendingUpDown} from 'react-icons/lu';
 
 const AuthLayout = ({ children }) => {
@@ -24,10 +28,17 @@ const AuthLayout = ({ children }) => {
          />
      </div>
 
+<<<<<<< HEAD
     {/* <img
      src={CARD_2}
      className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"
      />*/}
+=======
+     <img
+     src={CARD_2}
+     className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"
+     />
+>>>>>>> ca1ccd4679c5820cd7631ad80a0c2a81d832b670
 
      </div>
 
